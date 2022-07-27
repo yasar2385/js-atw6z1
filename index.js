@@ -45,6 +45,7 @@ const getCode = (e) => {
   e = e || window.event;
   return e.code;
 };
+var BK_SB_DEL = ['Delete','Space','Backspace']
 document.getElementById('input').addEventListener('keydown', (e) => {
   //console.log('Caret at: ', e.target.selectionStart);
   let key = getCode(e);
