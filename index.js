@@ -48,14 +48,14 @@ const getCode = (e) => {
 var BK_SB_DEL = ['Space', 'Delete', 'Backspace'];
 var GET_TEXT_VALUE = function (idx) {
   let txt = document.getElementById('input').value;
-  //console.log(txt, idx);
+  //console.log(idx, txt.charAt(idx));
   return txt.charAt(idx);
 };
 document.getElementById('input').addEventListener('keydown', (e) => {
   //console.log('Caret at: ', e.target.selectionStart);
-  var start = e.target.selectionStart;
+  var start = e.target.selectionStart - 1;
   var end = e.target.selectionEnd;
-  //console.log(start, end);
+  console.log(start, end);
   let key = getCode(e);
   let IsCancelable = !1;
   //console.log(e.code);
@@ -71,16 +71,20 @@ document.getElementById('input').addEventListener('keydown', (e) => {
       start_text = GET_TEXT_VALUE(del_key_indx == 1 ? start : start - 1);
       console.log('<' + start_text + '>');
       // get before char for remove - If number
-      if (!isNaN(start_text) && start_text != ' ') IsCancelable = !0;
+      if (!isNaN(start_text) || start_text == ' ') IsCancelable = !0;
       else {
         // other than number
+        console.log(start);
+        if (start <= 2) {
+          IsCancelable = !0;
+        }
       }
     }
   } else if (!isNaN(e.key)) {
     IsCancelable = !0;
     console.log(`Number ${key} was pressed!`);
   } else {
-    console.log(`alphabetic ${key} was pressed!`);
+    //console.log(`alphabetic ${key} was pressed!`);
   }
 
   if (IsCancelable) {
