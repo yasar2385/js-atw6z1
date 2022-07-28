@@ -63,19 +63,24 @@ document.getElementById('input').addEventListener('keydown', (e) => {
   let start_text = GET_TEXT_VALUE(start);
   //console.log('start_text ==> ' + start_text);
   //console.log(del_key_indx);
-  console.log(del_key_indx && del_key_indx > -1);
+  //console.log(del_key_indx && del_key_indx > -1);
   if (del_key_indx && del_key_indx > -1) {
-      console.log(`Remove ${key} was pressed!`);
-    if ((del_key_indx = 0)) IsCancelable = !0;
+    //console.log(`Remove ${key} was pressed!`);
+    if (del_key_indx == 0) IsCancelable = !0;
     else {
       start_text = GET_TEXT_VALUE(del_key_indx == 1 ? start : start - 1);
-      if (!isNaN(start_text)) IsCancelable = !0;
+      console.log('<' + start_text + '>');
+      // get before char for remove - If number
+      if (!isNaN(start_text) && start_text != ' ') IsCancelable = !0;
+      else {
+        // other than number
+      }
     }
   } else if (!isNaN(e.key)) {
     IsCancelable = !0;
-    //console.log(`Number ${key} was pressed!`);
+    console.log(`Number ${key} was pressed!`);
   } else {
-    //console.log(`alphabetic ${key} was pressed!`);
+    console.log(`alphabetic ${key} was pressed!`);
   }
 
   if (IsCancelable) {
