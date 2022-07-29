@@ -124,9 +124,10 @@ const log = document.getElementById('log');
 editor.oncopy = logCopy;
 editor.onpaste = logPaste;
 
-var ce = document.querySelector('[contenteditable]');
+var ce = document.querySelector('#demo[contenteditable]');
 ce.addEventListener('paste', function (e) {
   e.preventDefault();
-  var text = e.clipboardData.getData('text/plain');
-  document.execCommand('insertText', false, text);
+  var text = e.clipboardData.getData('text/html');
+  console.log(text);
+  document.execCommand('insertHTML', false, text);
 });
