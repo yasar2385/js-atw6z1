@@ -98,3 +98,28 @@ document.getElementById('btn1').addEventListener('click', (e) => {
   input.focus();
   input.setSelectionRange(2, 2);
 });
+
+document.getElementById('btn2').addEventListener('click', (e) => {
+  var el = document.getElementById('editable');
+  var range = document.createRange();
+  var sel = window.getSelection();
+
+  range.setStart(el.childNodes[2], 0);
+  range.collapse(true);
+
+  sel.removeAllRanges();
+  sel.addRange(range);
+});
+function logCopy(event) {
+  log.innerText = `Copied!\n${log.innerText}`;
+}
+
+function logPaste(event) {
+  log.innerText = `Pasted!\n${log.innerText}`;
+}
+
+const editor = document.getElementById('editor');
+const log = document.getElementById('log');
+
+editor.oncopy = logCopy;
+editor.onpaste = logPaste;
