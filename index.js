@@ -93,3 +93,8 @@ document.getElementById('input').addEventListener('keydown', (e) => {
   }
 });
 
+function selectText() {
+  const input = document.getElementById('text-box');
+  input.focus();
+  input.setSelectionRange(2, 2);
+}
