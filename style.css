@@ -1,3 +1,10 @@
 h1, h2 {
   font-family: Lato;
 }
+
+[contenteditable] {
+  background-color: black;
+  color: white;
+  width: 400px;
+  height: 200px;
+}
