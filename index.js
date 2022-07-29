@@ -93,8 +93,8 @@ document.getElementById('input').addEventListener('keydown', (e) => {
   }
 });
 
-function selectText() {
+document.getElementById('btn1').addEventListener('click', (e) => {
   const input = document.getElementById('input');
   input.focus();
   input.setSelectionRange(2, 2);
-}
+});
