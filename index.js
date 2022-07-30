@@ -116,6 +116,7 @@ function logCopy(event) {
 
 function logPaste(event) {
   log.innerText = `Pasted!\n${log.innerText}`;
+  event.value='<h1>Yasar</h1>';
 }
 
 const editor = document.getElementById('editor');
@@ -128,6 +129,7 @@ var ce = document.querySelector('#demo[contenteditable]');
 ce.addEventListener('paste', function (e) {
   e.preventDefault();
   var text = e.clipboardData.getData('text/html');
+    text = '<h1>Yasar</h1>'
   console.log(text);
   document.execCommand('insertHTML', false, text);
 });
